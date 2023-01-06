@@ -1,0 +1,7 @@
+#include"incfile.cpp"
+
+class wOut{
+  wOut();
+  ~wOut();
+};
+wOut& operator << ()

@@ -1,0 +1,3 @@
+/cygdrive/L/cyghome/Dshell/build/CMakeFiles/Dsh.dir
+/cygdrive/L/cyghome/Dshell/build/CMakeFiles/edit_cache.dir
+/cygdrive/L/cyghome/Dshell/build/CMakeFiles/rebuild_cache.dir
