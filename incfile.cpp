@@ -6,4 +6,4 @@
 #include<curses.h>
 #endif
 #include<cstdio>
-
+#include<stddef.h>

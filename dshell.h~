@@ -1,5 +1,7 @@
-#include"incfile.cpp"
-#include"ow.h"
+#include "incfile.h"
+
+
+//https://tldp.org/HOWTO/NCURSES-Programming-HOWTO/windows.html
 WINDOW *create_newwin(int height, int width, int starty, int startx)
 {	WINDOW *local_win;
 	local_win = newwin(height, width, starty, startx);
@@ -12,16 +14,4 @@ void destroy_win(WINDOW *local_win)
 	wborder(local_win, ' ', ' ', ' ',' ',' ',' ',' ',' ');
 	wrefresh(local_win);
 	delwin(local_win);
-}
-void dshell(){
-  WINDOW *win=create_newwin(24,80,0,0);
-  wOut ost(win);
-  ost<<curpos(5,5);
-  ost<<"helloworld!!";
-  //ost<<curpos(5,5)<<"helloworld!!"<<123ll;
-  getchar();
-  destroy_win(win);
-  // addstr("hello");
-  // refresh();
-  // getchar();
 }

@@ -1,8 +1,8 @@
 #include"pos.h"
-pos::pos(){
+curpos::curpos(){
   x=y=0;
 }
-pos::pos(size_t x,size_t y){
+curpos::curpos(size_t x,size_t y){
   this->x=x;
   this->y=y;
 }

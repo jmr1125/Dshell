@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 project(DShell VERSION 1.0)
 
-find_package(curses)
+find_package(Curses)
 
 message("courses_found = ${CURSES_FOUND}")
 
@@ -20,6 +20,6 @@ if("${CURSES_HAVE_NURSES_H}" EQUAL "TRUE")
 include(${CURSES_HAVE_NURSES_H})
 endif()
 
-add_executable(Dsh dshell.cpp)
+add_executable(Dsh main.cpp ow.cpp dshell.cpp pos.cpp)
 
 target_link_libraries(Dsh ${CURSES_LIBRARIES})

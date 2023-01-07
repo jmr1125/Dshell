@@ -1,22 +1,27 @@
 #include"ow.h"
-#define printmac(form)				\
-  if(tgpos){					\
-    mvprintw(y,x,form,rsh);			\
-    tgpos=false;				\
-  }else{					\
-    printw(form,rsh);				\
-  }						\
-  refresh();					\
-wOut& operator << (wOut&,const long long& rsh){
-  printmac("%lld");
+wOut::wOut(WINDOW *win){
+  this->win=win;
 }
-wOut& operator << (wOut&,char rsh){
-  printmac("%c");
+wOut& wOut::operator << (const long long& rsh){
+  wprintw(win,"%lld",rsh);
+  wrefresh(win);
+  return *this;
 }
-wOut& operator << (wOut&,const char* rsh){
-  printmac("%s");
+wOut& wOut::operator << (char rsh){
+  waddch(win,rsh);
+  wrefresh(win);
+  return *this;
 }
-wOut& operator << (wOut&,const rsh&){
-  cur=rsh;
-  tgpos=true;
+wOut& wOut::operator << (const char* rsh){
+  waddstr(win,rsh);
+  wrefresh(win);
+  //printf("str");
+  //printf("%s",rsh);
+  return *this;
+}
+wOut& wOut::operator << (const curpos &rsh){
+  //printf("move");
+  wmove(win,rsh.y,rsh.x);
+  wrefresh(win);
+  return *this;
 }

@@ -4,13 +4,13 @@
 
 class wOut{
  public:
-  wOut();
-  ~wOut();
- private:
-  pos cur;
-  bool tgpos=false;
+  wOut() = delete;
+  wOut(WINDOW*);
+  ~wOut() = default;
+  wOut& operator << (const long long&);
+  wOut& operator << (char);
+  wOut& operator << (const char*);
+  wOut& operator << (const curpos&);
+private:
+  WINDOW *win;
 };
-wOut& operator << (wOut&,const long long&);
-wOut& operator << (wOut&,char);
-wOut& operator << (wOut&,const char*);
-wOut& operator << (wOut&,const pos&);
