@@ -7,14 +7,14 @@
 
 # =============================================================================
 # Project: DShell
-# Configurations: 
+# Configurations: Debug
 # =============================================================================
 # =============================================================================
 
 #############################################
 # Rule for compiling CXX files.
 
-rule CXX_COMPILER__Dsh_
+rule CXX_COMPILER__Dsh_Debug
   depfile = $DEP_FILE
   deps = gcc
   command = /usr/bin/clang++ $DEFINES $INCLUDES $FLAGS -MD -MT $out -MF $DEP_FILE -o $out -c $in
@@ -24,7 +24,7 @@ rule CXX_COMPILER__Dsh_
 #############################################
 # Rule for linking CXX executable.
 
-rule CXX_EXECUTABLE_LINKER__Dsh_
+rule CXX_EXECUTABLE_LINKER__Dsh_Debug
   command = $PRE_LINK && /usr/bin/clang++ $FLAGS $LINK_FLAGS $in -o $TARGET_FILE -Wl,--out-implib,$TARGET_IMPLIB -Wl,--major-image-version,0,--minor-image-version,0 $LINK_PATH $LINK_LIBRARIES && $POST_BUILD
   description = Linking CXX executable $TARGET_FILE
   restat = $RESTAT
@@ -42,7 +42,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /usr/bin/cmake.exe --regenerate-during-build -S/cygdrive/L/cyghome/Dshell -B/cygdrive/L/cyghome/Dshell/build
+  command = /usr/bin/cmake.exe --regenerate-during-build -S/cygdrive/L/cyghome/Dshell -B/cygdrive/L/cyghome/dshell/build
   description = Re-running CMake...
   generator = 1
 

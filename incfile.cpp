@@ -7,3 +7,7 @@
 #endif
 #include<cstdio>
 #include<stddef.h>
+#include<thread>
+#include<atomic>
+using std::thread;
+using std::atomic;

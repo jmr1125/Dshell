@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: DShell
-# Configurations: 
+# Configurations: Debug
 # =============================================================================
 
 #############################################
@@ -20,6 +20,11 @@
 
 ninja_required_version = 1.5
 
+
+#############################################
+# Set configuration variable for custom commands.
+
+CONFIGURATION = Debug
 # =============================================================================
 # Include auxiliary files.
 
@@ -34,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /cygdrive/L/cyghome/Dshell/build/
+cmake_ninja_workdir = /cygdrive/L/cyghome/dshell/build/
 # =============================================================================
 # Object build statements for EXECUTABLE target Dsh
 
@@ -44,23 +49,33 @@ cmake_ninja_workdir = /cygdrive/L/cyghome/Dshell/build/
 
 build cmake_object_order_depends_target_Dsh: phony || CMakeFiles/Dsh.dir
 
-build CMakeFiles/Dsh.dir/main.cpp.o: CXX_COMPILER__Dsh_ /cygdrive/L/cyghome/Dshell/main.cpp || cmake_object_order_depends_target_Dsh
+build CMakeFiles/Dsh.dir/main.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/main.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/main.cpp.o.d
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
-build CMakeFiles/Dsh.dir/ow.cpp.o: CXX_COMPILER__Dsh_ /cygdrive/L/cyghome/Dshell/ow.cpp || cmake_object_order_depends_target_Dsh
+build CMakeFiles/Dsh.dir/ow.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/ow.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/ow.cpp.o.d
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
-build CMakeFiles/Dsh.dir/dshell.cpp.o: CXX_COMPILER__Dsh_ /cygdrive/L/cyghome/Dshell/dshell.cpp || cmake_object_order_depends_target_Dsh
+build CMakeFiles/Dsh.dir/dshell.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/dshell.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/dshell.cpp.o.d
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
-build CMakeFiles/Dsh.dir/pos.cpp.o: CXX_COMPILER__Dsh_ /cygdrive/L/cyghome/Dshell/pos.cpp || cmake_object_order_depends_target_Dsh
+build CMakeFiles/Dsh.dir/pos.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/pos.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/pos.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/Dsh.dir
+  OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
+
+build CMakeFiles/Dsh.dir/evtlistener.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/evtlistener.cpp || cmake_object_order_depends_target_Dsh
+  DEP_FILE = CMakeFiles/Dsh.dir/evtlistener.cpp.o.d
+  FLAGS = -g
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
@@ -72,7 +87,8 @@ build CMakeFiles/Dsh.dir/pos.cpp.o: CXX_COMPILER__Dsh_ /cygdrive/L/cyghome/Dshel
 #############################################
 # Link the executable Dsh.exe
 
-build Dsh.exe: CXX_EXECUTABLE_LINKER__Dsh_ CMakeFiles/Dsh.dir/main.cpp.o CMakeFiles/Dsh.dir/ow.cpp.o CMakeFiles/Dsh.dir/dshell.cpp.o CMakeFiles/Dsh.dir/pos.cpp.o | /usr/lib/libcurses.dll.a /usr/lib/libform.dll.a
+build Dsh.exe: CXX_EXECUTABLE_LINKER__Dsh_Debug CMakeFiles/Dsh.dir/main.cpp.o CMakeFiles/Dsh.dir/ow.cpp.o CMakeFiles/Dsh.dir/dshell.cpp.o CMakeFiles/Dsh.dir/pos.cpp.o CMakeFiles/Dsh.dir/evtlistener.cpp.o | /usr/lib/libcurses.dll.a /usr/lib/libform.dll.a
+  FLAGS = -g
   LINK_FLAGS = -Wl,--enable-auto-import
   LINK_LIBRARIES = -lcurses  -lform
   OBJECT_DIR = CMakeFiles/Dsh.dir
@@ -87,7 +103,7 @@ build Dsh.exe: CXX_EXECUTABLE_LINKER__Dsh_ CMakeFiles/Dsh.dir/main.cpp.o CMakeFi
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /cygdrive/L/cyghome/Dshell/build && /usr/bin/ccmake.exe -S/cygdrive/L/cyghome/Dshell -B/cygdrive/L/cyghome/Dshell/build
+  COMMAND = cd /cygdrive/L/cyghome/dshell/build && /usr/bin/ccmake.exe -S/cygdrive/L/cyghome/Dshell -B/cygdrive/L/cyghome/dshell/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -99,7 +115,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /cygdrive/L/cyghome/Dshell/build && /usr/bin/cmake.exe --regenerate-during-build -S/cygdrive/L/cyghome/Dshell -B/cygdrive/L/cyghome/Dshell/build
+  COMMAND = cd /cygdrive/L/cyghome/dshell/build && /usr/bin/cmake.exe --regenerate-during-build -S/cygdrive/L/cyghome/Dshell -B/cygdrive/L/cyghome/dshell/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -117,7 +133,7 @@ build Dsh: phony Dsh.exe
 # =============================================================================
 
 #############################################
-# Folder: /cygdrive/L/cyghome/Dshell/build
+# Folder: /cygdrive/L/cyghome/dshell/build
 
 build all: phony Dsh.exe
 
@@ -133,14 +149,14 @@ build all: phony Dsh.exe
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /usr/share/cmake-3.23.2/Modules/CMakeCInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.23.2/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.23.2/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.23.2/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeRCInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.23.2/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.23.2/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang-C.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang.cmake /usr/share/cmake-3.23.2/Modules/Compiler/GNU.cmake /usr/share/cmake-3.23.2/Modules/FindCurses.cmake /usr/share/cmake-3.23.2/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.23.2/Modules/FindPackageMessage.cmake /usr/share/cmake-3.23.2/Modules/FindPkgConfig.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-Clang-C.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-Clang-CXX.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU-C.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU-CXX.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-windres.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN.cmake /usr/share/cmake-3.23.2/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeRCCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /cygdrive/L/cyghome/Dshell/CMakeLists.txt /usr/share/cmake-3.23.2/Modules/CMakeCInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.23.2/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.23.2/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.23.2/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeRCInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.23.2/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.23.2/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang-C.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang.cmake /usr/share/cmake-3.23.2/Modules/Compiler/GNU.cmake /usr/share/cmake-3.23.2/Modules/FindCurses.cmake /usr/share/cmake-3.23.2/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.23.2/Modules/FindPackageMessage.cmake /usr/share/cmake-3.23.2/Modules/FindPkgConfig.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-Clang-C.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-Clang-CXX.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU-C.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU-CXX.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-windres.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN.cmake /usr/share/cmake-3.23.2/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeRCCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt /usr/share/cmake-3.23.2/Modules/CMakeCInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.23.2/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.23.2/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.23.2/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeRCInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.23.2/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.23.2/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang-C.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang.cmake /usr/share/cmake-3.23.2/Modules/Compiler/GNU.cmake /usr/share/cmake-3.23.2/Modules/FindCurses.cmake /usr/share/cmake-3.23.2/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.23.2/Modules/FindPackageMessage.cmake /usr/share/cmake-3.23.2/Modules/FindPkgConfig.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-Clang-C.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-Clang-CXX.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU-C.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU-CXX.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-windres.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN.cmake /usr/share/cmake-3.23.2/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeRCCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
+build /cygdrive/L/cyghome/Dshell/CMakeLists.txt /usr/share/cmake-3.23.2/Modules/CMakeCInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeCXXInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.23.2/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.23.2/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.23.2/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeRCInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.23.2/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.23.2/Modules/CheckLibraryExists.cmake /usr/share/cmake-3.23.2/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang-C.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang-CXX.cmake /usr/share/cmake-3.23.2/Modules/Compiler/Clang.cmake /usr/share/cmake-3.23.2/Modules/Compiler/GNU.cmake /usr/share/cmake-3.23.2/Modules/FindCurses.cmake /usr/share/cmake-3.23.2/Modules/FindPackageHandleStandardArgs.cmake /usr/share/cmake-3.23.2/Modules/FindPackageMessage.cmake /usr/share/cmake-3.23.2/Modules/FindPkgConfig.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-Clang-C.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-Clang-CXX.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU-C.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU-CXX.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-GNU.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN-windres.cmake /usr/share/cmake-3.23.2/Modules/Platform/CYGWIN.cmake /usr/share/cmake-3.23.2/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeRCCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
 
 
 #############################################

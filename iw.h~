@@ -1,4 +1,0 @@
-#include"incfile.cpp"
-class wIn{
-  wIn();
-};

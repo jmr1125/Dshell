@@ -1,0 +1,7 @@
+#include"incfile.cpp"
+class evtlistener{
+  mouselistener();
+  ~mouselistener();
+ private:
+  mmask_t mouse;
+}

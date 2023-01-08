@@ -1,3 +1,0 @@
-struct curpos{
-  size_t x,y;
-}
