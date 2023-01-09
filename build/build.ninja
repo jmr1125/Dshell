@@ -79,6 +79,12 @@ build CMakeFiles/Dsh.dir/evtlistener.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
+build CMakeFiles/Dsh.dir/style.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/style.cpp || cmake_object_order_depends_target_Dsh
+  DEP_FILE = CMakeFiles/Dsh.dir/style.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/Dsh.dir
+  OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Dsh
@@ -87,7 +93,7 @@ build CMakeFiles/Dsh.dir/evtlistener.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/
 #############################################
 # Link the executable Dsh.exe
 
-build Dsh.exe: CXX_EXECUTABLE_LINKER__Dsh_Debug CMakeFiles/Dsh.dir/main.cpp.o CMakeFiles/Dsh.dir/ow.cpp.o CMakeFiles/Dsh.dir/dshell.cpp.o CMakeFiles/Dsh.dir/pos.cpp.o CMakeFiles/Dsh.dir/evtlistener.cpp.o | /usr/lib/libcurses.dll.a /usr/lib/libform.dll.a
+build Dsh.exe: CXX_EXECUTABLE_LINKER__Dsh_Debug CMakeFiles/Dsh.dir/main.cpp.o CMakeFiles/Dsh.dir/ow.cpp.o CMakeFiles/Dsh.dir/dshell.cpp.o CMakeFiles/Dsh.dir/pos.cpp.o CMakeFiles/Dsh.dir/evtlistener.cpp.o CMakeFiles/Dsh.dir/style.cpp.o | /usr/lib/libcurses.dll.a /usr/lib/libform.dll.a
   FLAGS = -g
   LINK_FLAGS = -Wl,--enable-auto-import
   LINK_LIBRARIES = -lcurses  -lform

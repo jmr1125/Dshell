@@ -1,4 +1,0 @@
-#include"evtlistener.h"
-mouselistener::mouselistener(){
-  mousemask(mouse,NULL);
-}

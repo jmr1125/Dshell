@@ -1,6 +1,7 @@
 #pragma once
 #include"incfile.cpp"
 #include"pos.h"
+#include"style.h"
 
 class wOut{
  public:
@@ -11,6 +12,8 @@ class wOut{
   wOut& operator << (char);
   wOut& operator << (const char*);
   wOut& operator << (const curpos&);
+  wOut& operator << (const style&);
 private:
   WINDOW *win;
+  style now;
 };

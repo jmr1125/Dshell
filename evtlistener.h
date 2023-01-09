@@ -1,4 +1,5 @@
 #include"incfile.cpp"
+#include"dshell.h"
 class evtlistener{
 public:
   evtlistener()=delete;
@@ -12,4 +13,6 @@ public:
 private:
   mmask_t mouse;
   WINDOW *win;
+  thread *th;
+  atomic<bool> stop;
 };

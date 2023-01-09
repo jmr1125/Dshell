@@ -15,6 +15,9 @@ void destroy_win(WINDOW *local_win)
 	wrefresh(local_win);
 	delwin(local_win);
 }
+bool exit_cond(int ch){
+  return (ch&0x7f)=='q';
+}
 void dshell(){
   int maxy,maxx;
   getmaxyx(stdscr,maxy,maxx);
@@ -25,17 +28,15 @@ void dshell(){
   ost<<curpos(2,3)<<"hello\n";
   ost<<curpos(2,4)<<"press q to exit";
   while(true){
-    el.listen();
+    //el.listen();
     auto res=el.res;
     if(res.ch==KEY_MOUSE){
-      if(getmouse(&res.evt)==OK){
-	ost<<curpos(5,5)<<"x,y,z = "<<(long long)res.evt.x<<","<<(long long)res.evt.y<<","<<(long long)res.evt.z<<'\n';
-	ost<<curpos(5,6)<<"status = "<<(long long)(res.evt.bstate)<<'\n';
-      }
+      ost<<curpos(5,5)<<style(win,A_BOLD)<<"x,y,z = "<<style(win)<<(long long)res.evt.x<<","<<(long long)res.evt.y<<","<<(long long)res.evt.z<<'\n';
+      ost<<curpos(5,6)<<style(win,A_BOLD)<<"status = "<<style(win)<<(long long)(res.evt.bstate)<<'\n';
       ost<<curpos(5,7)<<"key_mouse";
     }
-    ost<<curpos(5,8)<<"ch = "<<(long long)res.ch<<"          "<<(long long)KEY_MOUSE;
-    if( (res.ch&0x7f)=='q'){
+    ost<<curpos(5,8)<<style(win,A_BOLD)<<"ch = "<<style(win)<<(long long)res.ch;
+    if(exit_cond(res.ch)){
       break;
     }
   }

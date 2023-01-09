@@ -1,5 +1,8 @@
 #include"ow.h"
-wOut::wOut(WINDOW *win){
+wOut::wOut(WINDOW *win):
+  now(win)
+{
+  now.on();
   this->win=win;
 }
 wOut& wOut::operator << (const long long& rsh){
@@ -23,5 +26,11 @@ wOut& wOut::operator << (const curpos &rsh){
   //printf("move");
   wmove(win,rsh.y,rsh.x);
   wrefresh(win);
+  return *this;
+}
+wOut& wOut::operator << (const style & rsh){
+  now.off();
+  rsh.on();
+  now=rsh;
   return *this;
 }
