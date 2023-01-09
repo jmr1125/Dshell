@@ -7,6 +7,9 @@ void evtlistener::listen(){
 evtlistener::evtlistener(WINDOW *win){
   this->win=win;
   mousemask(ALL_MOUSE_EVENTS|REPORT_MOUSE_POSITION,NULL);
+  
 }
 evtlistener::~evtlistener(){
+  stop=true;
+  th->join();
 }

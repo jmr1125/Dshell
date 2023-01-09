@@ -2,9 +2,9 @@
 int main(){
   initscr();
   raw();
-  keypad(stdscr,TRUE);
   //cbreak();
   noecho();
+  keypad(stdscr,TRUE);
 
   dshell();
 

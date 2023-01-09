@@ -12,4 +12,6 @@ public:
 private:
   mmask_t mouse;
   WINDOW *win;
+  thread *th;
+  atomic<bool> stop;
 };
