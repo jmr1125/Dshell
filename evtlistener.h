@@ -1,18 +1,22 @@
+#pragma once
 #include"incfile.cpp"
-#include"dshell.h"
+#include"dshell.h"				
+#define sig_null (0)
+#define sig_next (1)
+#define sig_stop (2)
 class evtlistener{
 public:
   evtlistener()=delete;
   evtlistener(WINDOW*);
   ~evtlistener();
-  void listen();
   struct res_t{
     MEVENT evt;
     int ch;
   }res;
+  atomic<int> sig;
 private:
+  void listen();
   mmask_t mouse;
   WINDOW *win;
   thread *th;
-  atomic<bool> stop;
 };

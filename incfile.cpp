@@ -9,5 +9,7 @@
 #include<stddef.h>
 #include<thread>
 #include<atomic>
+#include<string>
 using std::thread;
 using std::atomic;
+using std::string;
