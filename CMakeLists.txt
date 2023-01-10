@@ -20,6 +20,7 @@ if("${CURSES_HAVE_NURSES_H}" EQUAL "TRUE")
 include(${CURSES_HAVE_NURSES_H})
 endif()
 
-add_executable(Dsh main.cpp ow.cpp dshell.cpp pos.cpp evtlistener.cpp style.cpp iw.cpp)
+add_executable(Dsh main.cpp ow.cpp dshell.cpp pos.cpp evtlistener.cpp style.cpp iw.cpp shell_runner.cpp)
+add_executable(test runnertest.cpp shell_runner.cpp)
 
 target_link_libraries(Dsh ${CURSES_LIBRARIES})

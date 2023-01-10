@@ -8,7 +8,6 @@ void evtlistener::listen(){
     if(res.ch==KEY_MOUSE){
       wprintw(win,"receive mouse");
       if(getmouse(&res.evt)==OK){
-	//continue;
       }else{
 	wprintw(win,"mouse error !!!");
       }
@@ -19,7 +18,7 @@ void evtlistener::listen(){
 
 evtlistener::evtlistener(WINDOW *win){
   this->win=win;
-  sig=sig_null;//sig_next?
+  sig=sig_null;
   mousemask(ALL_MOUSE_EVENTS|REPORT_MOUSE_POSITION,NULL);
   th=new thread ([this](){listen();});
 }

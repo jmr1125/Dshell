@@ -91,6 +91,12 @@ build CMakeFiles/Dsh.dir/iw.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/D
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
+build CMakeFiles/Dsh.dir/shell_runner.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/shell_runner.cpp || cmake_object_order_depends_target_Dsh
+  DEP_FILE = CMakeFiles/Dsh.dir/shell_runner.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/Dsh.dir
+  OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target Dsh
@@ -99,7 +105,7 @@ build CMakeFiles/Dsh.dir/iw.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/D
 #############################################
 # Link the executable Dsh.exe
 
-build Dsh.exe: CXX_EXECUTABLE_LINKER__Dsh_Debug CMakeFiles/Dsh.dir/main.cpp.o CMakeFiles/Dsh.dir/ow.cpp.o CMakeFiles/Dsh.dir/dshell.cpp.o CMakeFiles/Dsh.dir/pos.cpp.o CMakeFiles/Dsh.dir/evtlistener.cpp.o CMakeFiles/Dsh.dir/style.cpp.o CMakeFiles/Dsh.dir/iw.cpp.o | /usr/lib/libcurses.dll.a /usr/lib/libform.dll.a
+build Dsh.exe: CXX_EXECUTABLE_LINKER__Dsh_Debug CMakeFiles/Dsh.dir/main.cpp.o CMakeFiles/Dsh.dir/ow.cpp.o CMakeFiles/Dsh.dir/dshell.cpp.o CMakeFiles/Dsh.dir/pos.cpp.o CMakeFiles/Dsh.dir/evtlistener.cpp.o CMakeFiles/Dsh.dir/style.cpp.o CMakeFiles/Dsh.dir/iw.cpp.o CMakeFiles/Dsh.dir/shell_runner.cpp.o | /usr/lib/libcurses.dll.a /usr/lib/libform.dll.a
   FLAGS = -g
   LINK_FLAGS = -Wl,--enable-auto-import
   LINK_LIBRARIES = -lcurses  -lform
@@ -109,6 +115,45 @@ build Dsh.exe: CXX_EXECUTABLE_LINKER__Dsh_Debug CMakeFiles/Dsh.dir/main.cpp.o CM
   TARGET_FILE = Dsh.exe
   TARGET_IMPLIB = libDsh.dll.a
   TARGET_PDB = Dsh.exe.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target test
+
+
+#############################################
+# Order-only phony target for test
+
+build cmake_object_order_depends_target_test: phony || CMakeFiles/test.dir
+
+build CMakeFiles/test.dir/runnertest.cpp.o: CXX_COMPILER__test_Debug /cygdrive/L/cyghome/Dshell/runnertest.cpp || cmake_object_order_depends_target_test
+  DEP_FILE = CMakeFiles/test.dir/runnertest.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/test.dir
+  OBJECT_FILE_DIR = CMakeFiles/test.dir
+
+build CMakeFiles/test.dir/shell_runner.cpp.o: CXX_COMPILER__test_Debug /cygdrive/L/cyghome/Dshell/shell_runner.cpp || cmake_object_order_depends_target_test
+  DEP_FILE = CMakeFiles/test.dir/shell_runner.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/test.dir
+  OBJECT_FILE_DIR = CMakeFiles/test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target test
+
+
+#############################################
+# Link the executable test.exe
+
+build test.exe: CXX_EXECUTABLE_LINKER__test_Debug CMakeFiles/test.dir/runnertest.cpp.o CMakeFiles/test.dir/shell_runner.cpp.o
+  FLAGS = -g
+  LINK_FLAGS = -Wl,--enable-auto-import
+  OBJECT_DIR = CMakeFiles/test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = test.exe
+  TARGET_IMPLIB = libtest.dll.a
+  TARGET_PDB = test.exe.dbg
 
 
 #############################################
@@ -139,6 +184,8 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build Dsh: phony Dsh.exe
 
+build test: phony test.exe
+
 # =============================================================================
 # Folder targets.
 
@@ -147,7 +194,7 @@ build Dsh: phony Dsh.exe
 #############################################
 # Folder: /cygdrive/L/cyghome/dshell/build
 
-build all: phony Dsh.exe
+build all: phony Dsh.exe test.exe
 
 # =============================================================================
 # Unknown Build Time Dependencies.
