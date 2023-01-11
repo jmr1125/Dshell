@@ -3,12 +3,12 @@ wIn::wIn(WINDOW *win){
   this->win=win;
 }
 wIn::~wIn(){}
-const wIn& wIn::operator << (long long& x)const{
+const wIn& wIn::operator >> (long long& x)const{
   callecho();
   wscanw(win,"%lld",&x);
   return *this;
 }
-const wIn& wIn::operator << (string& x)const{
+const wIn& wIn::operator >> (string& x)const{
   callecho();
   char str[256];
   //wscanw(win,"%s",str);
@@ -17,7 +17,7 @@ const wIn& wIn::operator << (string& x)const{
   
   return *this;
 }
-const wIn& wIn::operator << (char& x)const{
+const wIn& wIn::operator >> (char& x)const{
   callecho();
   x=wgetch(win);
   return *this;
@@ -46,4 +46,5 @@ void wIn::setecho(bool t){
     oncecall=false;
     isecho=t;
   }
+  callecho();
 }

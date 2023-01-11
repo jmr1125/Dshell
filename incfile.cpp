@@ -10,6 +10,9 @@
 #include<thread>
 #include<atomic>
 #include<string>
+#include<regex>
 using std::thread;
 using std::atomic;
 using std::string;
+using std::regex;
+using std::cmatch;

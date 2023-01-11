@@ -8,6 +8,9 @@ class wOut{
   wOut() = delete;
   wOut(WINDOW*);
   ~wOut() = default;
+  void Clear();
+  void Clrtobot();//TO BOTtom
+  void Clrtoeol();//TO End Of Line
   wOut& operator << (const long long&);
   wOut& operator << (char);
   wOut& operator << (const char*);

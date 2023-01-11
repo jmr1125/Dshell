@@ -5,9 +5,9 @@ class wIn{
 public:
   wIn(WINDOW *);
   ~wIn();
-  const wIn& operator << (long long&)const;
-  const wIn& operator << (string&)const;
-  const wIn& operator << (char&)const;
+  const wIn& operator >> (long long&)const;
+  const wIn& operator >> (string&)const;
+  const wIn& operator >> (char&)const;
   string getline()const;
   void setecho(bool);
 private:
