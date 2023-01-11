@@ -19,11 +19,6 @@ void destroy_win(WINDOW *local_win)
 bool exit_cond(int ch){
   return (ch&0x7f)=='q';
 }
-//regex command(R"(^((?:[^/]+/)*(?:.+))( .+)*)");
-//regex command(R"(^((?:".+"\s)|(?:)))");
-//regex command(R"(((?:".+")|(?:[^ ]+))((?:\s.+)?))");
-//regex command(R"(^((?:".+")|(?:[^"][^ ]+[^"]))((?: .+)?)$)");
-//regex command(R"(^(?=(?:".+")|(?:[^"][^ ]+[^"])|(?:[\w^ ]+))(.+)(.*)$)");
 regex command(R"(^((?:".+")|(?:[^"][^ ]+[^"])|(?:[\w^ ]+))(.*)$)");
 void dshell(){
   int maxy,maxx;
@@ -47,16 +42,12 @@ void dshell(){
     if(cmd=="exit"){
       break;
     }
-    ist.setecho(false);
     cmatch cm;
     if(regex_match(cmd.c_str(),cm,command)){
       (ost<<curpos(5,5)).Clrtoeol();
       (ost<<curpos(5,6)).Clrtoeol();
       (ost<<curpos(5,8)).Clrtoeol();
-      wborder(win,'|','|','-','-','+','+','+','+');
-      ost<<curpos(5,5)<<">>"<<string(cm[1]).c_str();
-      ost<<curpos(5,6)<<">>"<<string(cm[2]).c_str();
-      ost<<curpos(5,8);
+      (ost<<curpos(30,5)).Clrtoeol();
       char *args[100];
       int argid=1;
       memset(args,0,sizeof args);
@@ -64,9 +55,16 @@ void dshell(){
       memcpy(args[0],string(cm[1]).c_str(),string(cm[1]).size());
       args[0][string(cm[1]).size()]=0;
       int pos=0;
-      //const char *str=string(cm[2]).c_str();
       char str[100]{0};
       memcpy(str,string(cm[2]).c_str(),string(cm[2]).size());
+      ist.setecho(false);
+      wborder(win,'|','|','-','-','+','+','+','+');
+      (ost<<curpos(5,5)).Clrtoeol();
+      ost<<curpos(5,5)<<">>"<<string(cm[1]).c_str();
+      (ost<<curpos(5,6)).Clrtoeol();
+      ost<<curpos(5,6)<<">>"<<string(cm[2]).c_str();
+      (ost<<curpos(5,8)).Clrtoeol();
+      ost<<curpos(5,8);
       str[string(cm[2]).size()]=' ';
       int len=strlen(str);
       for(int i=0;i<len;++i){
@@ -84,11 +82,31 @@ void dshell(){
 
       for(int i=0;i<argid;++i){
 	move(8,5+i);
-	//wprintw(win,"%d:%d",i,(int)*(args[i]));
 	wprintw(win,"%d:\"%s\"",i,args[i]);
       }
       int input[2],output[2];
-      //pid=start(cmd.c_str(),args,input,output);
+      pid=start(cmd.c_str(),args,input,output);
+      string msg;
+      char buf[100];
+      while(true){
+	if(string(msg)=="exit"){
+	  break;
+	}
+	ost<<curpos(30,3)<<">>";
+	ost.Clrtoeol();
+	wborder(win,'|','|','-','-','+','+','+','+');
+	ist.setecho(true);
+	msg="";
+	ist>>msg;
+	ist.setecho(false);
+	write(output[1],msg.c_str(),msg.size());
+	memset(buf,0,sizeof buf);
+	read(input[0],buf,100);
+	ost<<curpos(30,5);ost.Clrtoeol();
+	ost<<curpos(30,5)<<">>"<<buf;
+      }
+      ost<<curpos(30,2)<<"receive "<<(long long)stop(pid);
+      
 
       for(int i=0;i<100;++i){
 	if(args[i]){
