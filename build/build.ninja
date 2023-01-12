@@ -155,6 +155,78 @@ build test.exe: CXX_EXECUTABLE_LINKER__test_Debug CMakeFiles/test.dir/runnertest
   TARGET_IMPLIB = libtest.dll.a
   TARGET_PDB = test.exe.dbg
 
+# =============================================================================
+# Object build statements for EXECUTABLE target test1
+
+
+#############################################
+# Order-only phony target for test1
+
+build cmake_object_order_depends_target_test1: phony || CMakeFiles/test1.dir
+
+build CMakeFiles/test1.dir/test.cpp.o: CXX_COMPILER__test1_Debug /cygdrive/L/cyghome/Dshell/test.cpp || cmake_object_order_depends_target_test1
+  DEP_FILE = CMakeFiles/test1.dir/test.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/test1.dir
+  OBJECT_FILE_DIR = CMakeFiles/test1.dir
+
+build CMakeFiles/test1.dir/shell_runner.cpp.o: CXX_COMPILER__test1_Debug /cygdrive/L/cyghome/Dshell/shell_runner.cpp || cmake_object_order_depends_target_test1
+  DEP_FILE = CMakeFiles/test1.dir/shell_runner.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/test1.dir
+  OBJECT_FILE_DIR = CMakeFiles/test1.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target test1
+
+
+#############################################
+# Link the executable test1.exe
+
+build test1.exe: CXX_EXECUTABLE_LINKER__test1_Debug CMakeFiles/test1.dir/test.cpp.o CMakeFiles/test1.dir/shell_runner.cpp.o
+  FLAGS = -g
+  LINK_FLAGS = -Wl,--enable-auto-import
+  OBJECT_DIR = CMakeFiles/test1.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = test1.exe
+  TARGET_IMPLIB = libtest1.dll.a
+  TARGET_PDB = test1.exe.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target simple
+
+
+#############################################
+# Order-only phony target for simple
+
+build cmake_object_order_depends_target_simple: phony || CMakeFiles/simple.dir
+
+build CMakeFiles/simple.dir/simple.cpp.o: CXX_COMPILER__simple_Debug /cygdrive/L/cyghome/Dshell/simple.cpp || cmake_object_order_depends_target_simple
+  DEP_FILE = CMakeFiles/simple.dir/simple.cpp.o.d
+  FLAGS = -g
+  OBJECT_DIR = CMakeFiles/simple.dir
+  OBJECT_FILE_DIR = CMakeFiles/simple.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target simple
+
+
+#############################################
+# Link the executable simple.exe
+
+build simple.exe: CXX_EXECUTABLE_LINKER__simple_Debug CMakeFiles/simple.dir/simple.cpp.o
+  FLAGS = -g
+  LINK_FLAGS = -Wl,--enable-auto-import
+  OBJECT_DIR = CMakeFiles/simple.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = simple.exe
+  TARGET_IMPLIB = libsimple.dll.a
+  TARGET_PDB = simple.exe.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -184,7 +256,11 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build Dsh: phony Dsh.exe
 
+build simple: phony simple.exe
+
 build test: phony test.exe
+
+build test1: phony test1.exe
 
 # =============================================================================
 # Folder targets.
@@ -194,7 +270,7 @@ build test: phony test.exe
 #############################################
 # Folder: /cygdrive/L/cyghome/dshell/build
 
-build all: phony Dsh.exe test.exe
+build all: phony Dsh.exe test.exe test1.exe simple.exe
 
 # =============================================================================
 # Unknown Build Time Dependencies.

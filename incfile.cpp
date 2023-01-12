@@ -11,8 +11,12 @@
 #include<atomic>
 #include<string>
 #include<regex>
+#include<mutex>
 using std::thread;
 using std::atomic;
 using std::string;
 using std::regex;
 using std::cmatch;
+using std::lock_guard;
+using std::mutex;
+using std::unique_lock;

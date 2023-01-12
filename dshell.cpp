@@ -88,23 +88,35 @@ void dshell(){
       pid=start(cmd.c_str(),args,input,output);
       string msg;
       char buf[100];
+      mutex mtx;
+      atomic<bool> exit;
+      exit=0;
+      thread th_read([&](){
+	while(!exit){
+	memset(buf,0,sizeof buf);
+	read(input[0],buf,100);
+	unique_lock<mutex> lck(mtx);
+	ost<<curpos(30,5);ost.Clrtoeol();
+	ost<<curpos(30,5)<<">>"<<buf<<curpos(36,3);
+	}
+      });
       while(true){
 	if(string(msg)=="exit"){
 	  break;
 	}
-	ost<<curpos(30,3)<<">>";
-	ost.Clrtoeol();
 	wborder(win,'|','|','-','-','+','+','+','+');
+	unique_lock<mutex> lck(mtx);
+	ost<<curpos(30,3)<<"input>";
+	ost.Clrtoeol();
+	lck.unlock();
 	ist.setecho(true);
 	msg="";
 	ist>>msg;
 	ist.setecho(false);
 	write(output[1],msg.c_str(),msg.size());
-	memset(buf,0,sizeof buf);
-	read(input[0],buf,100);
-	ost<<curpos(30,5);ost.Clrtoeol();
-	ost<<curpos(30,5)<<">>"<<buf;
       }
+      exit=true;
+      th_read.join();
       ost<<curpos(30,2)<<"receive "<<(long long)stop(pid);
       
 
