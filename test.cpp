@@ -98,6 +98,11 @@
 #include<stdlib.h>
 #include<string.h>
 #include<stdio.h>
+#include<mutex>
+#include<thread>
+#include<atomic>
+using std::unique_lock;
+using std::mutex;
 
 int main(int argc, char** argv)
 {
@@ -109,54 +114,70 @@ int main(int argc, char** argv)
     if(dup2(input [0],0 )==-1){printf("error ");exit(1);};
     if(dup2(output[1],STDOUT_FILENO)==-1){printf("error1");exit(1);};
     if(dup2(output[1],STDERR_FILENO)==-1){printf("error2");exit(1);};
-    //execl("/usr/bin/python","python",(char*)NULL);
     close(input[1]);
     close(output[0]);
-    while(true){
-      char str[1024]{0};
-      //int r_num=read(input[0],str,5);
-      //int r_num=5;
-      //scanf("%s",str);
-      //gets(str);
-      // fprintf(stdout,"out%c\n",getchar());
-      // fprintf(stdout,"out%d:%s\n",r_num,str);
-      // fprintf(stderr,"err%d;%s\n",r_num,str);
-      // //fscanf(stdin,"%s",str);
-      // fprintf(stdout,"outssssss\n");
-      // fflush(stdout);//IT"S NECESSARY ,ELSE,IT WILL NOT PRINT IMMEDIATLY.SO IT WON"T BE PUT INTO THE PIPE
-      // fprintf(stderr,"errsSssss\n");
-      // //fprintf(stderr,"ssssss\n");
-      // // write(output[1],"helo",4);
-      scanf("%s",str);
-      //printf("%c",getchar());
-      printf("%s",str);
-      fflush(stdout);
-      sleep(1);
-    }
+    // while(true){
+    //   char str[512]{0};
+    //   scanf("%s",str);
+    //   printf("%s",str);
+    //   fflush(stdout);
+    // }
+    execl("/usr/bin/sh","sh",(char*)NULL);
+    //exit(0);
   }
   /*
     stdin <-input[1]
     stdout ->output[0]
   */
-  //sleep(3);
   close(input[0]);
   close(output[1]);
+  std::mutex mtx;
+  std::atomic<bool> exit;
+  exit=false;
+  char buf[256]{0};
+  std::thread thr([&](){
+    while(!exit){
+      memset(buf,0,sizeof buf);
+      //printf("Reading ...\n");
+      int r_num=read(output[0],buf,256);
+      if(r_num){
+        unique_lock<mutex> lck(mtx);
+	//printf("len: %d\nbuf(%s)\n",r_num,buf);
+	printf("buf>> %s",buf);
+        lck.unlock();
+      }
+    }
+  });
+  char msg[256];
+  int len=0;
   while(true){
-    char msg[256];
-    printf("msg: ");
-    scanf("%s",msg);
-    msg[strlen(msg)]='\n';
-    if(!strncmp(msg,"exit",4))break;
+    memset(msg,0,sizeof msg);
+    len=0;
+    sleep(1);
+    {
+      unique_lock<mutex> lck(mtx);
+      printf("msg>>");
+    }
+    while((msg[len++]=getchar())!=EOF);
+    msg[len-1]=0;
+    // {
+    //   unique_lock<mutex> lck(mtx);
+    //   printf("msg: (%s)\n",msg);
+    // }
+    // printf("%d\n",kill(pid,0));
+    if(kill(pid,0)==-1){
+      printf("pid(%d) id died ..\n",pid);
+      break;
+    }
+    // printf("write\n");
     write(input[1],msg,strlen(msg));
-    printf("reading\n");
-    int r_num=0;
-    //do{
-      char buf[256]{0};
-      r_num=read(output[0],buf,256);
-      printf("read %d\nbuf: (%s)\n",r_num,buf);
-      //}while(r_num);
-    printf("%s\n",msg);
+    if(!strncmp(msg, "exit", 4)){
+      break;
+    }
   }
+  printf("EXIT ...\n");
+  exit=true;
+  thr.join();
   kill(pid,SIGKILL);//stop
   close(input[1]);
   close(output[0]);
