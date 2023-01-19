@@ -51,49 +51,67 @@ build cmake_object_order_depends_target_Dsh: phony || CMakeFiles/Dsh.dir
 
 build CMakeFiles/Dsh.dir/main.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/main.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/main.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
 build CMakeFiles/Dsh.dir/ow.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/ow.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/ow.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
 build CMakeFiles/Dsh.dir/dshell.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/dshell.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/dshell.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
 build CMakeFiles/Dsh.dir/pos.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/pos.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/pos.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
 build CMakeFiles/Dsh.dir/evtlistener.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/evtlistener.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/evtlistener.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
 build CMakeFiles/Dsh.dir/style.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/style.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/style.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
 build CMakeFiles/Dsh.dir/iw.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/iw.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/iw.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
 build CMakeFiles/Dsh.dir/shell_runner.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/shell_runner.cpp || cmake_object_order_depends_target_Dsh
   DEP_FILE = CMakeFiles/Dsh.dir/shell_runner.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
+  OBJECT_DIR = CMakeFiles/Dsh.dir
+  OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
+
+build CMakeFiles/Dsh.dir/form.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/form.cpp || cmake_object_order_depends_target_Dsh
+  DEP_FILE = CMakeFiles/Dsh.dir/form.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  OBJECT_DIR = CMakeFiles/Dsh.dir
+  OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
+
+build CMakeFiles/Dsh.dir/button.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/button.cpp || cmake_object_order_depends_target_Dsh
+  DEP_FILE = CMakeFiles/Dsh.dir/button.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  OBJECT_DIR = CMakeFiles/Dsh.dir
+  OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
+
+build CMakeFiles/Dsh.dir/inputbox.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L/cyghome/Dshell/inputbox.cpp || cmake_object_order_depends_target_Dsh
+  DEP_FILE = CMakeFiles/Dsh.dir/inputbox.cpp.o.d
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/Dsh.dir
   OBJECT_FILE_DIR = CMakeFiles/Dsh.dir
 
@@ -105,7 +123,7 @@ build CMakeFiles/Dsh.dir/shell_runner.cpp.o: CXX_COMPILER__Dsh_Debug /cygdrive/L
 #############################################
 # Link the executable Dsh.exe
 
-build Dsh.exe: CXX_EXECUTABLE_LINKER__Dsh_Debug CMakeFiles/Dsh.dir/main.cpp.o CMakeFiles/Dsh.dir/ow.cpp.o CMakeFiles/Dsh.dir/dshell.cpp.o CMakeFiles/Dsh.dir/pos.cpp.o CMakeFiles/Dsh.dir/evtlistener.cpp.o CMakeFiles/Dsh.dir/style.cpp.o CMakeFiles/Dsh.dir/iw.cpp.o CMakeFiles/Dsh.dir/shell_runner.cpp.o | /usr/lib/libcurses.dll.a /usr/lib/libform.dll.a
+build Dsh.exe: CXX_EXECUTABLE_LINKER__Dsh_Debug CMakeFiles/Dsh.dir/main.cpp.o CMakeFiles/Dsh.dir/ow.cpp.o CMakeFiles/Dsh.dir/dshell.cpp.o CMakeFiles/Dsh.dir/pos.cpp.o CMakeFiles/Dsh.dir/evtlistener.cpp.o CMakeFiles/Dsh.dir/style.cpp.o CMakeFiles/Dsh.dir/iw.cpp.o CMakeFiles/Dsh.dir/shell_runner.cpp.o CMakeFiles/Dsh.dir/form.cpp.o CMakeFiles/Dsh.dir/button.cpp.o CMakeFiles/Dsh.dir/inputbox.cpp.o | /usr/lib/libcurses.dll.a /usr/lib/libform.dll.a
   FLAGS = -g
   LINK_FLAGS = -Wl,--enable-auto-import
   LINK_LIBRARIES = -lcurses  -lform
@@ -127,13 +145,13 @@ build cmake_object_order_depends_target_test: phony || CMakeFiles/test.dir
 
 build CMakeFiles/test.dir/runnertest.cpp.o: CXX_COMPILER__test_Debug /cygdrive/L/cyghome/Dshell/runnertest.cpp || cmake_object_order_depends_target_test
   DEP_FILE = CMakeFiles/test.dir/runnertest.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/test.dir
   OBJECT_FILE_DIR = CMakeFiles/test.dir
 
 build CMakeFiles/test.dir/shell_runner.cpp.o: CXX_COMPILER__test_Debug /cygdrive/L/cyghome/Dshell/shell_runner.cpp || cmake_object_order_depends_target_test
   DEP_FILE = CMakeFiles/test.dir/shell_runner.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/test.dir
   OBJECT_FILE_DIR = CMakeFiles/test.dir
 
@@ -166,13 +184,13 @@ build cmake_object_order_depends_target_test1: phony || CMakeFiles/test1.dir
 
 build CMakeFiles/test1.dir/test.cpp.o: CXX_COMPILER__test1_Debug /cygdrive/L/cyghome/Dshell/test.cpp || cmake_object_order_depends_target_test1
   DEP_FILE = CMakeFiles/test1.dir/test.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/test1.dir
   OBJECT_FILE_DIR = CMakeFiles/test1.dir
 
 build CMakeFiles/test1.dir/shell_runner.cpp.o: CXX_COMPILER__test1_Debug /cygdrive/L/cyghome/Dshell/shell_runner.cpp || cmake_object_order_depends_target_test1
   DEP_FILE = CMakeFiles/test1.dir/shell_runner.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/test1.dir
   OBJECT_FILE_DIR = CMakeFiles/test1.dir
 
@@ -205,7 +223,7 @@ build cmake_object_order_depends_target_simple: phony || CMakeFiles/simple.dir
 
 build CMakeFiles/simple.dir/simple.cpp.o: CXX_COMPILER__simple_Debug /cygdrive/L/cyghome/Dshell/simple.cpp || cmake_object_order_depends_target_simple
   DEP_FILE = CMakeFiles/simple.dir/simple.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++17
   OBJECT_DIR = CMakeFiles/simple.dir
   OBJECT_FILE_DIR = CMakeFiles/simple.dir
 

@@ -8,9 +8,11 @@ pid_t start(const char* cmd,char*const argv[],int *inpipefd,int *outpipefd){
   pid = fork();
   if (pid == 0)
   {
-    dup2(outpipefd[0], STDIN_FILENO);
-    dup2(inpipefd[1], STDOUT_FILENO);
-    dup2(inpipefd[1], STDERR_FILENO);
+    if(dup2(outpipefd[0], STDIN_FILENO)==-1){fprintf(stderr,"error dup stdin  -> pipe \n");};
+    if(dup2(inpipefd[1], STDOUT_FILENO)==-1){fprintf(stderr,"error dup stdout -> pipe \n");};
+    if(dup2(inpipefd[1], STDERR_FILENO)==-1){fprintf(stderr,"error dup stderr -> pipe \n");};
+    close(inpipefd[0]);
+    close(outpipefd[1]);
     execvp(cmd,argv);
     exit(1);
   }

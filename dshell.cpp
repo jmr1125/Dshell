@@ -2,136 +2,54 @@
 #include"iow.h"
 #include"evtlistener.h"
 #include"shell_runner.h"
-WINDOW *create_newwin(int height, int width, int starty, int startx)
-{	WINDOW *local_win;
-	local_win = newwin(height, width, starty, startx);
-	//box(local_win, 0 , 0);
-	wborder(local_win,'|','|','-','-','+','+','+','+');
-	wrefresh(local_win);
-	return local_win;
-}
-void destroy_win(WINDOW *local_win)
-{
-	wborder(local_win, ' ', ' ', ' ',' ',' ',' ',' ',' ');
-	wrefresh(local_win);
-	delwin(local_win);
-}
-bool exit_cond(int ch){
-  return (ch&0x7f)=='q';
-}
+#include"form.h"
+#include"button.h"
+#include"inputbox.h"
 regex command(R"(^((?:".+")|(?:[^"][^ ]+[^"])|(?:[\w^ ]+))(.*)$)");
+string tohex(long long x){
+  char s[64];
+  sprintf(s,"%.8llx",x);
+  return s;
+}
 void dshell(){
-  int maxy,maxx;
-  getmaxyx(stdscr,maxy,maxx);
-  WINDOW *win=create_newwin(maxy,maxx,0,0);
-  keypad(win,TRUE);
-  wOut ost(win);
-  wIn ist(win);
-
-
-  int input[2],output[2];
-  pid_t pid;
-  
+  form main_f(getmaxy(stdscr),getmaxx(stdscr),0,0);
+  main_f.show();
+  keypad(main_f.getwin(),TRUE);
+  wOut ost(main_f.getwin());
+  wIn ist(main_f.getwin());
+  evtlistener el(main_f.getwin());
+  printf("\033[?1003h\n"); // Makes the terminal report mouse movement events
+  mouseinterval(10);
+  form subform(3,10,3,10);//10,3 bef ->
+  button but1(2,15,12,15);
+  inputbox inb1(3,10,29,13);
+  inb1.set_value("hello");
   while(true){
-    string cmd;
-    (ost<<curpos(3,3)).Clrtoeol();
-    wborder(win,'|','|','-','-','+','+','+','+');
-    ost<<"ready> ";
-    ist.setecho(true);
-    ist>>cmd;
-    if(cmd=="exit"){
+    inb1.set_value("hello");
+    main_f.show();
+    subform.show();
+    but1.show();
+    inb1.show();
+    el.listen();
+    // while(el.sig==sig_next);
+    // el.sig=sig_next;
+    ost<<curpos(3,3)<<"ch: "<<(long long)el.res.ch;
+    if(el.res.ch==KEY_MOUSE){
+      ost<<curpos(3,5)<<(long long)el.res.evt.x<<' '<<(long long)el.res.evt.y;
+      ost<<curpos(3,6)<<tohex(el.res.evt.bstate).c_str()<<' '<<(long long)el.res.evt.id;
+      ost<<curpos(3,7)<<(long long)subform.OnMouse(el.res.evt.x, el.res.evt.y);
+      auto trans=subform.Mousexy(el.res.evt.x, el.res.evt.y);
+      ost<<curpos(3,8)<<(long long)trans.first<<" "<<(long long)trans.second<<' ';
+      ost<<curpos(3,9)<<(but1.process(&el.res)).c_str()<<"       ";
+
+      ost<<curpos(15,3)<<(inb1.process(&el.res)).c_str()<<"         ";
+      ost<<curpos(15,4)<<(long long)inb1.curs<<' '<<(long long)inb1.bos<<"      ";
+      //ost<<curpos(15,5)<<(long long)getmaxx(inb1.getwin())<<" "<<(long long)getmaxy(inb1.getwin());
+    }else if(el.res.ch=='l'){
+      wclear(main_f.getwin());
+    }else if(el.res.ch=='q'){
       break;
     }
-    cmatch cm;
-    if(regex_match(cmd.c_str(),cm,command)){
-      (ost<<curpos(5,5)).Clrtoeol();
-      (ost<<curpos(5,6)).Clrtoeol();
-      (ost<<curpos(5,8)).Clrtoeol();
-      (ost<<curpos(30,5)).Clrtoeol();
-      char *args[100];
-      int argid=1;
-      memset(args,0,sizeof args);
-      args[0]=new char [string(cm[1]).size()+1];
-      memcpy(args[0],string(cm[1]).c_str(),string(cm[1]).size());
-      args[0][string(cm[1]).size()]=0;
-      int pos=0;
-      char str[100]{0};
-      memcpy(str,string(cm[2]).c_str(),string(cm[2]).size());
-      ist.setecho(false);
-      wborder(win,'|','|','-','-','+','+','+','+');
-      (ost<<curpos(5,5)).Clrtoeol();
-      ost<<curpos(5,5)<<">>"<<string(cm[1]).c_str();
-      (ost<<curpos(5,6)).Clrtoeol();
-      ost<<curpos(5,6)<<">>"<<string(cm[2]).c_str();
-      (ost<<curpos(5,8)).Clrtoeol();
-      ost<<curpos(5,8);
-      str[string(cm[2]).size()]=' ';
-      int len=strlen(str);
-      for(int i=0;i<len;++i){
-	if(str[i]==' '){
-	  int lenn=i-pos+1;
-	  args[argid]=new char[lenn+1];
-	  memset(args[argid],0,lenn+1);//+1 to end the str with '\0'
-	  for(int j=pos;j<=i;++j){
-	    args[argid][j-pos]=str[j];
-	  }
-	  pos=i+1;
-	  ++argid;
-	}
-      }
-
-      for(int i=0;i<argid;++i){
-	move(8,5+i);
-	wprintw(win,"%d:\"%s\"",i,args[i]);
-      }
-      int input[2],output[2];
-      pid=start(cmd.c_str(),args,input,output);
-      string msg;
-      char buf[100];
-      mutex mtx;
-      atomic<bool> exit;
-      exit=0;
-      thread th_read([&](){
-	while(!exit){
-	memset(buf,0,sizeof buf);
-	read(input[0],buf,100);
-	unique_lock<mutex> lck(mtx);
-	ost<<curpos(30,5);ost.Clrtoeol();
-	ost<<curpos(30,5)<<">>"<<buf<<curpos(36,3);
-	}
-      });
-      while(true){
-	if(string(msg)=="exit"){
-	  break;
-	}
-	wborder(win,'|','|','-','-','+','+','+','+');
-	unique_lock<mutex> lck(mtx);
-	ost<<curpos(30,3)<<"input>";
-	ost.Clrtoeol();
-	lck.unlock();
-	ist.setecho(true);
-	msg="";
-	ist>>msg;
-	ist.setecho(false);
-	write(output[1],msg.c_str(),msg.size());
-      }
-      exit=true;
-      th_read.join();
-      ost<<curpos(30,2)<<"receive "<<(long long)stop(pid);
-      
-
-      for(int i=0;i<100;++i){
-	if(args[i]){
-	  delete[] args[i];
-	}
-      }
-      
-    }else{
-      ost<<curpos(5,5)<<"can't match regex";
-    }
-    
   }
-
-
-  destroy_win(win);
+  printf("\033[?1003l\n");
 }

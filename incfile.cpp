@@ -12,6 +12,7 @@
 #include<string>
 #include<regex>
 #include<mutex>
+#include<utility>
 using std::thread;
 using std::atomic;
 using std::string;
@@ -20,3 +21,5 @@ using std::cmatch;
 using std::lock_guard;
 using std::mutex;
 using std::unique_lock;
+using std::pair;
+using std::make_pair;
