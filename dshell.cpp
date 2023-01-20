@@ -13,6 +13,7 @@ string tohex(long long x){
 }
 void dshell(){
   form main_f(getmaxy(stdscr),getmaxx(stdscr),0,0);
+  wbkgd(main_f.getwin(), COLOR_PAIR(1));
   main_f.show();
   keypad(main_f.getwin(),TRUE);
   wOut ost(main_f.getwin());
@@ -20,19 +21,20 @@ void dshell(){
   evtlistener el(main_f.getwin());
   printf("\033[?1003h\n"); // Makes the terminal report mouse movement events
   mouseinterval(10);
-  form subform(3,10,3,10);//10,3 bef ->
+  form subform(3,10,3,10);
   button but1(2,15,12,15);
-  inputbox inb1(3,10,29,13);
-  inb1.set_value("hello");
+  inputbox inb1(3,15,29,13);
+  wbkgd(subform.getwin(), COLOR_PAIR(1));
+  wbkgd(but1.getwin(), COLOR_PAIR(1));
+  wbkgd(inb1.getwin(), COLOR_PAIR(1));
+  //inb1.set_value("hello");
   while(true){
-    inb1.set_value("hello");
+    inb1.set_value("abcdefghijklmnopqrst");
     main_f.show();
     subform.show();
     but1.show();
     inb1.show();
     el.listen();
-    // while(el.sig==sig_next);
-    // el.sig=sig_next;
     ost<<curpos(3,3)<<"ch: "<<(long long)el.res.ch;
     if(el.res.ch==KEY_MOUSE){
       ost<<curpos(3,5)<<(long long)el.res.evt.x<<' '<<(long long)el.res.evt.y;
@@ -44,7 +46,7 @@ void dshell(){
 
       ost<<curpos(15,3)<<(inb1.process(&el.res)).c_str()<<"         ";
       ost<<curpos(15,4)<<(long long)inb1.curs<<' '<<(long long)inb1.bos<<"      ";
-      //ost<<curpos(15,5)<<(long long)getmaxx(inb1.getwin())<<" "<<(long long)getmaxy(inb1.getwin());
+      ost<<curpos(15,5)<<(long long)(getmaxx(inb1.getwin())-2)*(getmaxy(inb1.getwin())-2)<<"    ";
     }else if(el.res.ch=='l'){
       wclear(main_f.getwin());
     }else if(el.res.ch=='q'){
