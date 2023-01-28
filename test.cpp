@@ -46,6 +46,17 @@ int main(int argc, char** argv)
       }
     }
   });
+  std::thread runningstill([&]{
+    while(!exit){
+      int status;
+      while(waitpid(pid, &status, WNOHANG) < 0){
+	if(errno!=EINTR){
+	  status=-1;
+	  break;
+	}
+      }
+    }
+  });
   char msg[256];
   int len=0;
   while(true){
