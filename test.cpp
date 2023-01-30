@@ -9,11 +9,12 @@
 using std::mutex;
 using std::unique_lock;
 
+std::atomic<bool> isexit;
 void handle(int sig) {
   if (sig == SIGCHLD) {
     int pid, status;
-    //printw("recv SIGCHLD");
-    mvprintw(LINES-1,0,"bash died");
+    mvprintw(LINES - 1, 0, "bash died");
+    isexit = true;
     while ((pid = waitpid(-1, &status, WNOHANG) > 0)) {
     };
   }
@@ -39,7 +40,6 @@ int main(int argc, char **argv) {
     close(input[1]);
     close(output[0]);
     execl("/usr/bin/bash", "bash", "--login", (char *)NULL);
-    // system("/usr/bin/bash --login");
     exit(0);
   }
   /*
@@ -49,53 +49,72 @@ int main(int argc, char **argv) {
   close(input[0]);
   close(output[1]);
   std::mutex mtx;
-  std::atomic<bool> exit;
-  exit = false;
+  isexit = false;
   signal(SIGCHLD, handle);
-  char buf[256]{0};
+  // auto ffunc = [&](int sig) {
+  //   if (sig == SIGCHLD) {
+  //     int pid, status;
+  //     mvprintw(LINES - 1, 0, "bash died");
+  //     // exit = true;
+  //     while ((pid = waitpid(-1, &status, WNOHANG) > 0)) {
+  //     };
+  //   }
+  //   return;
+  // };
+  // void (*func)(int) = ffunc;
+  // auto add = [](int a, int b) { return a + b; };
+  // int (*addd)(int, int) = add;
+  // signal(SIGCHLD, func);
   initscr();
   noecho();
-  std::thread thr([&]() {
-    while (!exit) {
+  nodelay(stdscr, TRUE);
+  keypad(stdscr, TRUE);
+  std::thread Output([&]() {
+    char buf[256]{0};
+    while (!isexit) {
       memset(buf, 0, sizeof buf);
       int r_num = read(output[0], buf, 256);
       if (r_num) {
         unique_lock<mutex> lck(mtx);
-        move(0, COLS / 2);
-        printw("buf>> %s", buf);
+        // move(0, COLS / 2);
+        // printw("buf>> %s", buf);
+        mvprintw(0, COLS / 2, "buf>> %s", buf);
         refresh();
       }
-      // move(LINES/2, COLS / 2);
-      // printw("%d",(bool)exit);
-      refresh();
     }
   });
-  {
-    int status;
-    int len = 0;
-    while (status != -1) {
-      if (kill(pid, 0) == -1) {
+  while (true) {
+    attron(A_NORMAL);
+    if (isexit) {
+      mvprintw(LINES - 1, 1, "exit");
+      refresh();
+      break;
+    }
+    auto msg = getch();
+    if (msg == ERR) {
+      mvprintw(1, 1, "no input");
+      clrtoeol();
+      refresh();
+      continue;
+    } else {
+      // clear();
+      mvprintw(1, 1, "msg = %d %c", msg, msg), clrtoeol();
+      // if (msg == 'q') {
+      // if (msg == KEY_F(1)) {
+      if (msg == KEY_F(2)) {
+        mvprintw(LINES - 1, 1, "--- %s ---", "EXIT");
         break;
+      } else if (msg == 'l') {
+        clear();
       }
-      char msg;
-      msg = getch();
-      // clrtoeol();
-      clear();
-      {
-        unique_lock<mutex> lck(mtx);
-        move(1, 1);
-        printw("msg= %d", (int)msg);
+      if (isexit) {
+        mvprintw(LINES - 1, 1, "exit");
         refresh();
-      }
-      if (msg == 'q')
-        break;
-      if (status == -1) {
         break;
       }
       write(input[1], &msg, 1);
+      refresh();
     }
-    printw("EXIT ...\n");
-    refresh();
   }
   kill(pid, SIGKILL); // stop
   close(input[1]);
@@ -103,12 +122,13 @@ int main(int argc, char **argv) {
   {
     int status = 0;
     waitpid(pid, &status, 0);
-    move(LINES - 1, 1);
-    printw("---return: %d---\n", status);
+    mvprintw(LINES - 1, 0, "---return: %d---\n", status);
   }
-  exit = true;
-  thr.join();
+  isexit = true;
+
+  Output.join();
+  mvprintw(6, 1, "output stop");
   refresh();
-  getch();
+  // getch();
   endwin();
 }

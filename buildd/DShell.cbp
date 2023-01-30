@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="DShell"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="L:/cyghome/Dshell/buildd"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v all"/>
+					<CompileFile command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+					<DistClean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Dsh">
+				<Option output="L:/cyghome/Dshell/buildd/Dsh.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="L:/cyghome/Dshell/buildd"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v Dsh"/>
+					<CompileFile command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+					<DistClean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Dsh/fast">
+				<Option output="L:/cyghome/Dshell/buildd/Dsh.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="L:/cyghome/Dshell/buildd"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v Dsh/fast"/>
+					<CompileFile command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+					<DistClean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test">
+				<Option output="L:/cyghome/Dshell/buildd/test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="L:/cyghome/Dshell/buildd"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v test"/>
+					<CompileFile command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+					<DistClean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test/fast">
+				<Option output="L:/cyghome/Dshell/buildd/test.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="L:/cyghome/Dshell/buildd"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v test/fast"/>
+					<CompileFile command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+					<DistClean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test1">
+				<Option output="L:/cyghome/Dshell/buildd/test1.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="L:/cyghome/Dshell/buildd"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v test1"/>
+					<CompileFile command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+					<DistClean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test1/fast">
+				<Option output="L:/cyghome/Dshell/buildd/test1.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="L:/cyghome/Dshell/buildd"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v test1/fast"/>
+					<CompileFile command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+					<DistClean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="simple">
+				<Option output="L:/cyghome/Dshell/buildd/simple.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="L:/cyghome/Dshell/buildd"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v simple"/>
+					<CompileFile command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+					<DistClean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="simple/fast">
+				<Option output="L:/cyghome/Dshell/buildd/simple.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="L:/cyghome/Dshell/buildd"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/mingw32"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include/c++/backward"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/../../../../include"/>
+					<Add directory="c:\mingw\bin\../lib/gcc/mingw32/9.2.0/include-fixed"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v simple/fast"/>
+					<CompileFile command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+					<DistClean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="L:/cyghome/Dshell/buildd"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v edit_cache"/>
+					<CompileFile command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+					<DistClean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="L:/cyghome/Dshell/buildd"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v rebuild_cache"/>
+					<CompileFile command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v &quot;$file&quot;"/>
+					<Clean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+					<DistClean command="C:/Users/j_nh/AppData/Local/Programs/Python/Python310/Scripts/ninja.exe -v clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="L:/cyghome/Dshell/button.cpp">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/button.h">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/dshell.cpp">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/dshell.h">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/evtlistener.cpp">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/evtlistener.h">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/form.cpp">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/form.h">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/inputbox.cpp">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/inputbox.h">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/iw.cpp">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/iw.h">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/main.cpp">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/ow.cpp">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/ow.h">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/pos.cpp">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/pos.h">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/runnertest.cpp">
+			<Option target="test"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/shell_runner.cpp">
+			<Option target="Dsh"/>
+			<Option target="test"/>
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/shell_runner.h">
+			<Option target="Dsh"/>
+			<Option target="test"/>
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/simple.cpp">
+			<Option target="simple"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/style.cpp">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/style.h">
+			<Option target="Dsh"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/test.cpp">
+			<Option target="test1"/>
+		</Unit>
+		<Unit filename="L:/cyghome/Dshell/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
