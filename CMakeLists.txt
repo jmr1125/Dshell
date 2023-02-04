@@ -23,6 +23,7 @@ endif()
 add_executable(Dsh main.cpp ow.cpp dshell.cpp pos.cpp evtlistener.cpp style.cpp iw.cpp shell_runner.cpp form.cpp button.cpp inputbox.cpp)
 add_executable(test runnertest.cpp shell_runner.cpp)
 add_executable(test1 test.cpp shell_runner.cpp)
+add_executable(test2 test2.cpp shell_runner.cpp)
 add_executable(simple simple.cpp)
 
 target_link_libraries(Dsh ${CURSES_LIBRARIES})

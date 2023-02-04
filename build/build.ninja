@@ -214,6 +214,45 @@ build test1.exe: CXX_EXECUTABLE_LINKER__test1_Debug CMakeFiles/test1.dir/test.cp
   TARGET_PDB = test1.exe.dbg
 
 # =============================================================================
+# Object build statements for EXECUTABLE target test2
+
+
+#############################################
+# Order-only phony target for test2
+
+build cmake_object_order_depends_target_test2: phony || CMakeFiles/test2.dir
+
+build CMakeFiles/test2.dir/test2.cpp.o: CXX_COMPILER__test2_Debug /cygdrive/L/cyghome/Dshell/test2.cpp || cmake_object_order_depends_target_test2
+  DEP_FILE = CMakeFiles/test2.dir/test2.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  OBJECT_DIR = CMakeFiles/test2.dir
+  OBJECT_FILE_DIR = CMakeFiles/test2.dir
+
+build CMakeFiles/test2.dir/shell_runner.cpp.o: CXX_COMPILER__test2_Debug /cygdrive/L/cyghome/Dshell/shell_runner.cpp || cmake_object_order_depends_target_test2
+  DEP_FILE = CMakeFiles/test2.dir/shell_runner.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  OBJECT_DIR = CMakeFiles/test2.dir
+  OBJECT_FILE_DIR = CMakeFiles/test2.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target test2
+
+
+#############################################
+# Link the executable test2.exe
+
+build test2.exe: CXX_EXECUTABLE_LINKER__test2_Debug CMakeFiles/test2.dir/test2.cpp.o CMakeFiles/test2.dir/shell_runner.cpp.o
+  FLAGS = -g
+  LINK_FLAGS = -Wl,--enable-auto-import
+  OBJECT_DIR = CMakeFiles/test2.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = test2.exe
+  TARGET_IMPLIB = libtest2.dll.a
+  TARGET_PDB = test2.exe.dbg
+
+# =============================================================================
 # Object build statements for EXECUTABLE target simple
 
 
@@ -281,6 +320,8 @@ build test: phony test.exe
 
 build test1: phony test1.exe
 
+build test2: phony test2.exe
+
 # =============================================================================
 # Folder targets.
 
@@ -289,7 +330,7 @@ build test1: phony test1.exe
 #############################################
 # Folder: /cygdrive/L/cyghome/dshell/build
 
-build all: phony Dsh.exe test.exe test1.exe simple.exe
+build all: phony Dsh.exe test.exe test1.exe test2.exe simple.exe
 
 # =============================================================================
 # Unknown Build Time Dependencies.

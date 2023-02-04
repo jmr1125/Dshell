@@ -1,0 +1,2 @@
+syntax-check:
+	cmake --build build

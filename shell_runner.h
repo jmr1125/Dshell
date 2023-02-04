@@ -1,9 +1,10 @@
-#include"incfile.cpp"
-#include<unistd.h>
-#include<sys/wait.h>
+#include "incfile.cpp"
+#include <sys/wait.h>
+#include <unistd.h>
 //#include<sys/prctl.h>
-#include<signal.h>
-#include<string.h>
-#include<stdio.h>
-pid_t start(const char*,char*const[],int *,int *);
+#include <fcntl.h>
+#include <signal.h>
+#include <stdio.h>
+#include <string.h>
+pid_t start(const char *, int *, int *, promise<pid_t>);
 int stop(pid_t);
