@@ -1,55 +1,53 @@
 #include "shell_runner.h" //https://www.thinbug.com/q/6171552
-pid_t start_helper(const char *cmd, char *const argv[], int *input, int *output,
-                   int *sigexit, promise<int> &started) {
+pid_t start_helper(const char *cmd, char *const argv[], int fdm, int fds) {
   pid_t pid = 0;
   int status;
 
-  pipe(input);
-  pipe(output);
-  pipe(sigexit);
-  fcntl(sigexit[0], F_SETFL, fcntl(sigexit[0], F_GETFL));
   pid = fork();
   if (pid == 0) {
-    fprintf(stderr,"start_helper start0\n");
-    if (dup2(input[0], STDIN_FILENO) == -1) {
-      fprintf(stderr, "error dup stdin  -> pipe \n");
+    close(fdm);
+    // struct termios slave_orig_term_settings; // Saved terminal settings
+    // struct termios new_term_settings;        // Current terminal settings
+    // // Save the defaults parameters of the slave side of the PTY
+    // tcgetattr(fds, &slave_orig_term_settings);
+    // // Set RAW mode on slave side of PTY
+    // new_term_settings = slave_orig_term_settings;
+    // cfmakeraw(&new_term_settings);
+    // tcsetattr(fds, TCSANOW, &new_term_settings);
+    // fprintf(stderr, "start_helper start0\n");
+    if (dup2(fds, STDIN_FILENO) == -1) {
+      fprintf(stderr, "error dup stdin  -> fdm \n");
     };
-    fprintf(stderr,"processing res0");
-    if (dup2(output[1], STDOUT_FILENO) == -1) {
-      fprintf(stderr, "error dup stdout -> pipe \n");
+    // fprintf(stderr, "processing res0");
+    if (dup2(fds, STDOUT_FILENO) == -1) {
+      fprintf(stderr, "error dup stdout -> fdm \n");
     };
-    fprintf(stderr,"processing res1");
-    if (dup2(output[1], STDERR_FILENO) == -1) {
-      fprintf(stderr, "error dup stderr -> pipe \n");
+    // fprintf(stderr, "processing res1");
+    if (dup2(fds, STDERR_FILENO) == -1) {
+      fprintf(stderr, "error dup stderr -> fdm \n");
     };
-    fprintf(stderr,"processing res2");
-    close(input[1]);
-    close(output[0]);
-    close(sigexit[0]);
+    close(fds);
+    // setsid();
+    ioctl(0, TIOCSCTTY, 1);
+    // fprintf(stderr, "processing res2");
     // execvp(cmd, argv);
-    fprintf(stderr,"processing res");
-    string res = ([](const char *cmd, char *const *argv) -> string {
-      string res = cmd;
-      res += ' ';
-      for (char *const *ptr = argv; ptr; ++ptr) {
-        res += *ptr;
-        res += ' ';
-      }
-      return res;
-    }(cmd, argv));
-    started.set_value(0);
-    fprintf(stderr,"start_helper start");
-    fprintf(stderr, "cmd: \"%s\"\n", res.c_str());
-    sleep(5);
-    write(sigexit[1], "exit", 4);
-    close(sigexit[1]);
-    close(output[1]);
-    close(input[0]);
-    exit(0);
+    // fprintf(stderr, "processing res");
+    // string res = ([](const char *cmd, char *const *argv) -> string {
+    //   string res = cmd;
+    //   res += ' ';
+    //   for (char *const *ptr = argv; ptr; ++ptr) {
+    //     res += *ptr;
+    //     res += ' ';
+    //   }
+    //   return res;
+    // }(cmd, argv));
+    // fprintf(stderr, "start_helper start");
+    // fprintf(stderr, "cmd: \"%s\"\n", res.c_str());
+    // sleep(5);
+    // fprintf(stderr, "%s", cmd);
+    execvp(cmd, argv);
+    exit(1);
   }
-  close(output[1]);
-  close(sigexit[1]);
-  close(input[0]);
 
   return pid;
 }
@@ -64,7 +62,7 @@ int get_status(pid_t pid) {
   waitpid(pid, &status, WNOHANG | WUNTRACED);
   return status;
 }
-int start(const char *cmd, int *in, int *out, promise<pid_t> pidv) {
+pid_t start(const char *cmd, int *FDM) {
   static regex command(R"(^((?:".+")|(?:[^"][^ ]+[^"])|(?:[\w^ ]+))(.*)$)");
   static std::chrono::milliseconds span(100);
   cmatch cm;
@@ -93,26 +91,16 @@ int start(const char *cmd, int *in, int *out, promise<pid_t> pidv) {
         ++argid;
       }
     }
+    --argid;
+    delete args[argid];
+    args[argid] = NULL;
   }
-  int input[2], output[2], sig[2];
-  promise<int> started;
-  pid_t pid = start_helper(string(cm[1]).c_str(), args, input, output, sig,
-                           ref(started));
-  pidv.set_value(pid);
-  fprintf(stderr,"set pid\n");
-  char exitbuf[10];
-  auto startedd = started.get_future();
-  //startedd.get();
-  startedd.wait();
-  fprintf(stderr,"starting\n");
-  do {
-    errno = 0;
-    memset(exitbuf, 0, sizeof exitbuf);
-    int len = read(sig[0], exitbuf, 4);
-    if (len > 0) {
-      fprintf(stderr, "\"%s\"\n", exitbuf);
-      break;
-    }
-  } while (errno == EAGAIN);
-  return stop(pid);
+  int fdm, fds;
+  if (openpty(&fdm, &fds, NULL, NULL, NULL) == -1) {
+    return -1;
+  }
+  pid_t pid = start_helper(string(cm[1]).c_str(), args, fdm, fds);
+  *FDM = fdm;
+  close(fds);
+  return pid;
 }

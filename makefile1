@@ -1,0 +1,23 @@
+check-syntax:
+#cmake --build build
+#clang++ `ls|grep -e "\\.c$$"` `ls|grep "\\.cpp$$"` -fsyntax-only
+	make button
+	make dshell
+	make inputbox
+	make ow
+	make pos
+	make evtlistener
+	make form
+	make incfile
+	make incfile
+	make inputbox
+	make iw
+	make shell_runner
+	make simple
+	make style
+	make test
+	make test2
+button:button.cpp
+	clang++ button.cpp -fsyntax-only
+dshell:dshell.cpp
+	clang++ dshell.cpp -fsyntax-only

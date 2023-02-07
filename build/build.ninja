@@ -242,9 +242,10 @@ build CMakeFiles/test2.dir/shell_runner.cpp.o: CXX_COMPILER__test2_Debug /cygdri
 #############################################
 # Link the executable test2.exe
 
-build test2.exe: CXX_EXECUTABLE_LINKER__test2_Debug CMakeFiles/test2.dir/test2.cpp.o CMakeFiles/test2.dir/shell_runner.cpp.o
+build test2.exe: CXX_EXECUTABLE_LINKER__test2_Debug CMakeFiles/test2.dir/test2.cpp.o CMakeFiles/test2.dir/shell_runner.cpp.o | /usr/lib/libcurses.dll.a /usr/lib/libform.dll.a
   FLAGS = -g
   LINK_FLAGS = -Wl,--enable-auto-import
+  LINK_LIBRARIES = -lcurses  -lform
   OBJECT_DIR = CMakeFiles/test2.dir
   POST_BUILD = :
   PRE_LINK = :

@@ -6,5 +6,5 @@
 #include <signal.h>
 #include <stdio.h>
 #include <string.h>
-pid_t start(const char *, int *, int *, promise<pid_t>);
+pid_t start(const char *, int *);
 int stop(pid_t);

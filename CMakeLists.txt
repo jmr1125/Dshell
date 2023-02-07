@@ -28,3 +28,4 @@ add_executable(simple simple.cpp)
 
 target_link_libraries(Dsh ${CURSES_LIBRARIES})
 target_link_libraries(test1 ${CURSES_LIBRARIES})
+target_link_libraries(test2 ${CURSES_LIBRARIES})
